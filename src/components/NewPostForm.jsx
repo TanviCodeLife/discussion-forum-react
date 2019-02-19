@@ -11,7 +11,7 @@ function NewPostForm (props) {
 
   function handleNewPostFormSubmission(event){
     event.preventDefault();
-    props.onNewPostCreation({title: _title.value, message: _message.value, category: _category.value, image: _image.value, id: v4()});
+    props.onNewPostCreation({title: _title.value, message: _message.value, category: _category.value, image: _image.value, likes: 0, dislikes: 0, id: v4()});
     _title = '';
     _message = '';
     _category = '';

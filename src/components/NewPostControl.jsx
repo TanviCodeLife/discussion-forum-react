@@ -11,7 +11,6 @@ class NewPostControl extends React.Component {
       formVisibleOnPage: true,
     };
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
-    this.renderRedirect = this.renderRedirect.bind(this);
   }
 
   handleFormSubmission(){
@@ -19,16 +18,10 @@ class NewPostControl extends React.Component {
   }
 
 
-  renderRedirect(){
-    if (!this.state.formVisibleOnPage) {
-      return <Redirect to='/' />
-    }
-  }
-
   render(){
     let currentlyVisibleContent = null;
     if (!this.state.formVisibleOnPage) {
-      {this.renderRedirect()}
+      currentlyVisibleContent = <Redirect to='/' />
     } else {
       currentlyVisibleContent = <NewPostForm onNewPostCreation={this.props.onNewPostCreation} handleFormSubmission={this.handleFormSubmission}/>;
     }

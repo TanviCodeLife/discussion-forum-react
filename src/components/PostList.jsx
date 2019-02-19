@@ -3,23 +3,36 @@ import Post from './Post';
 import PropTypes from 'prop-types';
 
 function PostList(props){
-  console.log(props.postList);
+
+  function sortByLikes(){
+    props.onSortPostList();
+  }
+
   return (
     <div>
+      <button onClick={sortByLikes}>Sort</button>
       <hr/>
       {props.postList.map((post) =>
         <Post title={post.title}
           category={post.category}
           message={post.message}
           image={post.image}
-          key={post.id}/>
+          likes={post.likes}
+          dislikes={post.dislikes}
+          key={post.id}
+          id={post.id}
+          onLikedPost={props.onLikedPost}
+          onDislikedPost={props.onDislikedPost}/>
       )}
     </div>
   );
 }
 
 PostList.propTypes = {
-  postList: PropTypes.array
+  postList: PropTypes.array,
+  onLikedPost: PropTypes.func,
+  onDislikedPost: PropTypes.func,
+  onSortPostList: PropTypes.func
 };
 
 export default PostList;
