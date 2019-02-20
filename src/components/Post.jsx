@@ -11,9 +11,6 @@ function Post(props){
     props.onDislikedPost(props.id);
   }
 
-  function displayTimeOpen(timeOpen) {
-    return timeOpen.from(new Moment(), true);
-  }
 
   return (
     <div>
@@ -21,7 +18,7 @@ function Post(props){
       <h3>{props.title}</h3>
       <p>{props.category}</p>
       <p>{props.message}</p>
-      <p>Added {displayTimeOpen(props.timeOpen)} ago</p>
+      <p>{props.formattedWaitTime}</p>
       <p>{props.likes}</p>
       <button onClick={handleNewLike}>Like</button>
       <p>{props.dislikes}</p>
@@ -41,7 +38,7 @@ Post.propTypes = {
   id: PropTypes.string.isRequired,
   onLikedPost: PropTypes.func,
   onDislikedPost: PropTypes.func,
-  timeOpen: PropTypes.instanceOf(Moment).isRequired
+  formattedWaitTime: PropTypes.string.isRequired
 };
 
 export default Post;

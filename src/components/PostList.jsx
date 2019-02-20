@@ -19,7 +19,7 @@ function PostList(props){
           image={post.image}
           likes={post.likes}
           dislikes={post.dislikes}
-          timeOpen={post.timeOpen}
+          formattedWaitTime={post.formattedWaitTime}
           key={post.id}
           id={post.id}
           onLikedPost={props.onLikedPost}

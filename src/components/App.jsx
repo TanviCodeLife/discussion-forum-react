@@ -4,6 +4,7 @@ import PostList from './PostList';
 import NewPostControl from './NewPostControl';
 import Error404 from './Error404';
 import { Switch, Route } from 'react-router-dom';
+import Moment from 'moment';
 
 class App extends React.Component {
 
@@ -16,7 +17,61 @@ class App extends React.Component {
     this.handleIncrementLikes = this.handleIncrementLikes.bind(this);
     this.handleIncrementDislikes = this.handleIncrementDislikes.bind(this);
     this.handleSortPostList = this.handleSortPostList.bind(this);
+    this.handleIncrementDislikes.bind(this);
+    this.updateTicketElapsedWaitTime = this.updateTicketElapsedWaitTime.bind(this);
   }
+
+
+  componentDidMount() {
+  this.waitTimeUpdateTimer = setInterval(() =>
+    this.updateTicketElapsedWaitTime(),
+    60000
+  );
+}
+
+  componentWillUnmount(){
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
+  componentWillMount() {
+    console.log('componentWillMount');
+  }
+
+  componentWillReceiveProps() {
+    console.log('componentWillReceiveProps');
+  }
+
+  shouldComponentUpdate() {
+    console.log('shouldComponentUpdate');
+    return true;
+  }
+
+  componentWillUpdate() {
+    console.log('componentWillUpdate');
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
+  }
+
+
+  updateTicketElapsedWaitTime() {
+      console.log("check");
+      let newMasterPostList = this.state.masterPostList.slice();
+      ticket.formattedWaitTime = (ticket.timeOpen).fromNow(true);
+      newMasterTicketList.push(newTicket);
+      this.setState({masterPostList: newMasterPostList})
+    }
+
+
+  handleSortPostList(){
+    var sortedPostList = this.state.masterPostList.slice();
+    sortedPostList.sort(function (a, b) {
+      return a.likes - b.likes;
+    });
+    this.setState({masterPostList: sortedPostList});
+  }
+
 
   handleAddingNewPostToList(newPost){
     var newMasterPostList = this.state.masterPostList.slice();
@@ -44,13 +99,6 @@ class App extends React.Component {
     this.setState({masterPostList: updatedMasterPostList});
   }
 
-  handleSortPostList(){
-    var sortedPostList = this.state.masterPostList.slice();
-    sortedPostList.sort(function (a, b) {
-      return a.likes - b.likes;
-    });
-    this.setState({masterPostList: sortedPostList});
-  }
 
 
   render(){
