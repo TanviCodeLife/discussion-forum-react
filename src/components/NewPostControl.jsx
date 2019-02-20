@@ -2,7 +2,7 @@ import React from 'react';
 import NewPostForm from './NewPostForm';
 import PostList from './PostList';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 class NewPostControl extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class NewPostControl extends React.Component {
   render(){
     let currentlyVisibleContent = null;
     if (!this.state.formVisibleOnPage) {
-      currentlyVisibleContent = <Redirect to='/' />
+      currentlyVisibleContent=<Redirect to='/'/>;
     } else {
       currentlyVisibleContent = <NewPostForm onNewPostCreation={this.props.onNewPostCreation} handleFormSubmission={this.handleFormSubmission}/>;
     }

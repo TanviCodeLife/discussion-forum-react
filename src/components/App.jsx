@@ -47,10 +47,10 @@ class App extends React.Component {
   handleSortPostList(){
     var sortedPostList = this.state.masterPostList.slice();
     sortedPostList.sort(function (a, b) {
-        return a.likes - b.likes;
-      });
+      return a.likes - b.likes;
+    });
     this.setState({masterPostList: sortedPostList});
-    }
+  }
 
 
   render(){
@@ -59,7 +59,7 @@ class App extends React.Component {
         <Header/>
         <Switch>
           <Route exact path='/' render={()=><PostList postList={this.state.masterPostList} onLikedPost={this.handleIncrementLikes} onDislikedPost={this.handleIncrementDislikes}
-          onSortPostList={this.handleSortPostList}/>} />
+            onSortPostList={this.handleSortPostList}/>} />
           <Route path='/newpost' render={()=><NewPostControl onNewPostCreation={this.handleAddingNewPostToList} />} />
           <Route component={Error404} />
         </Switch>

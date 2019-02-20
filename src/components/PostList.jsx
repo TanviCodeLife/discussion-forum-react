@@ -1,9 +1,9 @@
 import React from 'react';
 import Post from './Post';
 import PropTypes from 'prop-types';
+import Moment from 'moment';
 
 function PostList(props){
-
   function sortByLikes(){
     props.onSortPostList();
   }
@@ -19,6 +19,7 @@ function PostList(props){
           image={post.image}
           likes={post.likes}
           dislikes={post.dislikes}
+          timeOpen={post.timeOpen}
           key={post.id}
           id={post.id}
           onLikedPost={props.onLikedPost}

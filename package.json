@@ -7,7 +7,7 @@
     "test": "test",
     "start": "node_modules/.bin/webpack-dev-server",
     "lint": "eslint src/components/**; exit 0",
-    "fix": "eslint src/components/**; --fix; exit 0"
+    "fix": "eslint src/components/** --fix; exit 0"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/entegral/reactJsTemplate#readme",
   "dependencies": {
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

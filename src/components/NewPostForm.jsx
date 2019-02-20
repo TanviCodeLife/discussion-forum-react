@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 import { Link } from 'react-router-dom';
+import Moment from 'moment';
 
 function NewPostForm (props) {
   let _title = null;
@@ -11,7 +12,9 @@ function NewPostForm (props) {
 
   function handleNewPostFormSubmission(event){
     event.preventDefault();
-    props.onNewPostCreation({title: _title.value, message: _message.value, category: _category.value, image: _image.value, likes: 0, dislikes: 0, id: v4()});
+    let newPost={title: _title.value, message: _message.value, category: _category.value, image: _image.value, likes: 0, dislikes: 0, id: v4(), timeOpen: new Moment()};
+
+    props.onNewPostCreation(newPost);
     _title = '';
     _message = '';
     _category = '';
@@ -32,16 +35,16 @@ function NewPostForm (props) {
           id='message'
           placeholder='Message'
           ref= {(textarea) => {_message = textarea;}}/>
-          <input
-            type='text'
-            id='category'
-            placeholder='Category'
-            ref= {(input) => {_category = input;}} />
-          <input
-            type='text'
-            id='image'
-            placeholder='Image URL'
-            ref= {(input) => {_image = input;}} />
+        <input
+          type='text'
+          id='category'
+          placeholder='Category'
+          ref= {(input) => {_category = input;}} />
+        <input
+          type='text'
+          id='image'
+          placeholder='Image URL'
+          ref= {(input) => {_image = input;}} />
         <button type='submit'>Post</button>
       </form>
     </div>
